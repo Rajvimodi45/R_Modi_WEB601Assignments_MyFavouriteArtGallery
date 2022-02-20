@@ -1,0 +1,20 @@
+<h3 class="title">
+    {{ art?.title }}
+</h3>
+<img (click)="imageClicked()" *ngIf="art?.imgURL" class="image" [src]="art?.imgURL">
+<p>
+    {{ art?.description }}
+</p>
+<div class="meta-data">
+    <div class="creator">
+        {{ art?.creator}}
+    </div>
+    <div *ngIf="art?.type" class="art?.type">
+        {{ art?.type }}
+    </div>
+    <div class="tags" *ngIf="art?.tags">
+        <span class="tag" *ngFor="let tag of art?.tags">
+            #{{ tag }}
+        </span>
+    </div>
+</div>
