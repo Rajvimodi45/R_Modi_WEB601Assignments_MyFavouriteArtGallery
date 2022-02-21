@@ -24,7 +24,7 @@ export class ContentListComponent implements OnInit {
       title: "Art Gallery of Nova Scotia",
       description: "The Art Gallery of Nova Scotia is the largest art museum in Atlantic Canada.",
       creator: "Courtesy of Destination Halifax",
-      imgURL: "https://img.theculturetrip.com/768x/smart/wp-content/uploads/2017/09/art-gallery-of-nova-scotia.jpg",
+      imgURL: "",
       type: "museum",
       tags: ["permanent collection"]
     }, {
@@ -51,7 +51,7 @@ export class ContentListComponent implements OnInit {
       title: "Art Gallery of Ontario",
       description: "Found in Toronto, the Art Gallery of Ontario has over 80,000 works within its permanent collection, which span from the 1st century to the present day.",
       creator: "Ramin Bahrani",
-      imgURL: "https://img.theculturetrip.com/768x/smart/images/default_location.jpg",
+      imgURL: "",
       type: "artgallery",
       tags: ["permanent collection"]
     },
@@ -68,6 +68,9 @@ export class ContentListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
+
    checkForTitle(searchValue: string): void{
     let searchList = this.artgalleryList.filter(c => c.title == searchValue);
     if (searchList.length > 0){
@@ -79,6 +82,7 @@ export class ContentListComponent implements OnInit {
       this.searchFlag = false;
     }
   }
+
   donothing(){
 
   }

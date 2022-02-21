@@ -1,7 +1,13 @@
 <h3 class="title">
     {{ art?.title }}
 </h3>
-<img (click)="imageClicked()" *ngIf="art?.imgURL" class="image" [src]="art?.imgURL">
+<div *ngIf="art?.imgURL; else default">
+    <img (click)="imageClicked()" *ngIf="art?.imgURL" class="image" [src]="art?.imgURL">
+</div>
+<ng-template #default>
+    <img  src="https://previews.123rf.com/images/yurazaga/yurazaga1705/yurazaga170500002/77575964-wortkunstb%C3%BCrstenbeschriftung-kunstgalerie-deckblatt.jpg" class="defaultimg">
+  </ng-template>
+
 <p>
     {{ art?.description }}
 </p>
@@ -9,10 +15,10 @@
     <div class="creator">
         {{ art?.creator}}
     </div>
-    <div *ngIf="art?.type" class="art?.type">
-        {{ art?.type }}
+    <div *ngIf="art?.type" typeHoverAffect type-affect="hovertypeaffect" class="art?.type">
+        <h4>{{ art?.type }}</h4>
     </div>
-    <div class="tags" *ngIf="art?.tags">
+    <div class="tags" typeHoverAffect type-affect="testbd" *ngIf="art?.tags">
         <span class="tag" *ngFor="let tag of art?.tags">
             #{{ tag }}
         </span>
