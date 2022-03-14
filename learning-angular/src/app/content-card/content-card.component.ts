@@ -7,18 +7,12 @@ import { Content } from '../helper-files/content-interface';
   styleUrls: ['./content-card.component.css']
 })
 export class ContentCardComponent implements OnInit {
-  @Input() art?: Content;
-
+  @Input() galleryItem?: Content;
   constructor() {
-
+    
+    this.galleryItem = { id: 0, title: '', description: '', creator: '', imgURL: '' };
   }
-
-
   ngOnInit(): void {
-  }
-
-  imageClicked(): void {
-    console.log("ID: ", this.art?.id, ", Title: ", this.art?.title);
   }
 
 }

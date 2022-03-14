@@ -1,2 +1,8 @@
-<app-content-card *ngFor="let item of artgalleryList; first as isFirstArtOnList" [class.first-art]="isFirstArtOnList"
-                        [art]="item"></app-content-card>
+
+<div>
+    <div *ngIf="let item of singleItem;" [singleItem]="singleItem"></div>
+</div>
+<div>
+    <app-content-card *ngFor="let item of bunchOfGallery; index as i; last as isLast" [galleryItem]="item"
+        [class.is-last]="isLast"></app-content-card>
+</div>
