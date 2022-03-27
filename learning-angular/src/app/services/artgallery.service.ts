@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BUNCHOFGALLERY } from '../helper-files/contentDb';
 import { Content } from '../helper-files/content-interface';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -9,20 +10,18 @@ import { Observable, of } from 'rxjs';
 })
 export class ArtgalleryService {
 
-  constructor() { }
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-type': 'application/json' })
+  };
+  
+  constructor(private http: HttpClient) { }
 
-  getContent(): Content[] { 
-    return BUNCHOFGALLERY;
+  getContent(): Observable<Content[]> { // get the content synchronously - not real world
+    console.log("Getting the list");
+    return this.http.get<Content[]>("api/gallery");
   }
-
-  getContentObs(): Observable<Content[]> { 
-    return of(BUNCHOFGALLERY);
+  addContent(newContentItem: Content): Observable<Content>{
+    console.log("added the new content: ", newContentItem);
+    return this.http.post<Content>("api/gallery", newContentItem, this.httpOptions);
   }
-
-  getContentGallery(id:Number): Observable<Content[]> {
-    const galleryFiltered = BUNCHOFGALLERY.filter(gallery => {
-      return gallery.id === Number(id);
-    });
-    return of(galleryFiltered);
-  } 
 }

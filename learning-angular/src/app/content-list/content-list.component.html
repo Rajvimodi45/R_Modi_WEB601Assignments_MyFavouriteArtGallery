@@ -1,8 +1,8 @@
 
-<div>
-    <div *ngIf="let item of singleItem;" [singleItem]="singleItem"></div>
-</div>
+<app-modify-content-component (newGalleryEvent)="addGalleryToList($event)"></app-modify-content-component>
+
 <div>
     <app-content-card *ngFor="let item of bunchOfGallery; index as i; last as isLast" [galleryItem]="item"
         [class.is-last]="isLast"></app-content-card>
 </div>
+

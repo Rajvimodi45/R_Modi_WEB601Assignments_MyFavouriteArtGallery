@@ -11,22 +11,37 @@ import { ArtgalleryService } from '../services/artgallery.service';
 export class ContentListComponent implements OnInit {
   
   bunchOfGallery: Content[];
-  gallery_id!: number;
-  singleItem:Content[] = [];
+
   constructor(private artgalleryService: ArtgalleryService) {
     this.bunchOfGallery = [];
     
    }
-  
-  ngOnInit(): void {
-    this.artgalleryService.getContentObs().subscribe(galleryArray => this.bunchOfGallery = galleryArray);
-    this.artgalleryService.getContentGallery(2).subscribe(featchedgallery => {
-      this.singleItem = featchedgallery;
+
+   ngOnInit(): void {
+    this.getGalleryFromServer();
+  }
+
+  getGalleryFromServer(): void{
+    this.artgalleryService.getContent().subscribe(galleryArray => this.bunchOfGallery = galleryArray);
+  }
+
+  addGalleryToList(newGalleryFromChild: Content): void {
+    this.artgalleryService.addContent(newGalleryFromChild).subscribe(newContentFromServer => {
+      console.log("New content from server: ", newContentFromServer);
+      // potentially useful if the server data is frequently updated
+      // this.getFoodFromServer();
+
+
+      // more efficient way of getting just 1 new item and adding it to the list
+      this.bunchOfGallery.push(newContentFromServer);
+      this.bunchOfGallery = [...this.bunchOfGallery]; // using the spread operator
+
     });
   }
 
-  
 
   }
+
+
 
 
