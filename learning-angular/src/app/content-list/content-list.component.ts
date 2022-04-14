@@ -68,22 +68,23 @@ export class ContentListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-
-
    checkForTitle(searchValue: string): void{
     let searchList = this.artgalleryList.filter(c => c.title == searchValue);
     if (searchList.length > 0){
-      this.searchMessage  = "Found the movie!";
+      this.searchMessage  = "Found the art!";
       this.searchFlag = true;
     }
     else{
-      this.searchMessage  = "No movie with that title";
+      this.searchMessage  = "No art with that title";
       this.searchFlag = false;
     }
   }
 
-  donothing(){
+  addContentToParent(contentFromChild: Content) {
+    console.log("got to the parent", contentFromChild);
+    this.artgalleryList.push(contentFromChild);
+    console.log("artgallery List ", this.artgalleryList);
+    this.artgalleryList = [...this.artgalleryList]; 
 
   }
 

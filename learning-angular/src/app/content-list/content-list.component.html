@@ -1,2 +1,11 @@
-<app-content-card *ngFor="let item of artgalleryList; first as isFirstArtOnList" [class.first-art]="isFirstArtOnList"
-                        [art]="item"></app-content-card>
+<app-create-content (newContentEvent)="addContentToParent($event)"></app-create-content>
+  
+  <app-content-card *ngFor="let item of (artgalleryList | typeFilter); first as isFirstArtOnList" [class.first-art]="isFirstArtOnList"
+      [art]="item" class="notype" ></app-content-card>
+  
+  <app-content-card *ngFor="let item of (artgalleryList | typeFilter: 'museum'); first as isFirstArtOnList" [class.first-art]="isFirstArtOnList"
+                    [art]="item" class="Outdoor" ></app-content-card>
+  
+  <app-content-card *ngFor="let item of (artgalleryList | typeFilter: 'artgallery'); first as isFirstArtOnList" [class.first-art]="isFirstArtOnList"
+                    [art]="item" class="Indoor" ></app-content-card>
+  

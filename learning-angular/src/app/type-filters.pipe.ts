@@ -12,7 +12,7 @@ export class TypeFilterPipe implements PipeTransform {
 
       if (filterByThisType) {
 
-        return c.type == filterByThisType;
+        return c.type?.toLowerCase() == filterByThisType.toLowerCase();
 
       } else {
 
